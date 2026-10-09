@@ -27,11 +27,11 @@ export default function BookingFlowPage() {
   const handleFinalSubmit = (e) => {
     e.preventDefault();
     if (!selectedSlot) {
-      alert('Kripya time slot select kijiye!');
+      alert('Please select a time slot!');
       return;
     }
     if (serviceType === 'home' && !address.trim()) {
-      alert('Doorstep home service ke liye address bharna zaroori hai!');
+      alert('Please enter your address for doorstep home service!');
       return;
     }
 
@@ -92,7 +92,7 @@ export default function BookingFlowPage() {
 
               <button 
                 onClick={() => {
-                  if (!selectedSlot) alert('Kripya time slot select karein!');
+                  if (!selectedSlot) alert('Please select a time slot!');
                   else setStep(2);
                 }}
                 className="w-full bg-amber-500 text-slate-950 font-bold py-3.5 rounded-2xl text-xs hover:bg-amber-400 transition cursor-pointer"

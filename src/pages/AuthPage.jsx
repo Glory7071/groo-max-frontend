@@ -44,29 +44,29 @@ export default function AuthPage() {
 
     if (!isLogin) {
       if (!formData.name.trim()) {
-        setError('Kripya apna poora naam bharein.');
+        setError('Please enter your full name.');
         return;
       }
 
       const phoneRegex = /^[6-9]\d{9}$/;
       if (!phoneRegex.test(formData.phone)) {
-        setError('Kripya valid 10-digit mobile number enter karein.');
+        setError('Please enter a valid 10-digit mobile number.');
         return;
       }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
-        setError('Kripya sahi email address enter karein.');
+        setError('Please enter a valid email address.');
         return;
       }
 
       if (formData.password.length < 6) {
-        setError('Password kam se kam 6 characters ka hona chahiye.');
+        setError('Please enter a valid email address.');
         return;
       }
 
       if (formData.password !== formData.confirmPassword) {
-        setError('Password aur Confirm Password match nahi ho rahe hain!');
+        setError('Passwords do not match!');
         return;
       }
     }
@@ -86,7 +86,7 @@ export default function AuthPage() {
         
         // Owner Account Approval Verification Check (Point 4 & 14 Blueprint)
         if (role === 'owner' && userData.approvalStatus === 'Pending') {
-          setError('Aapka Salon Owner account abhi Admin verification ke liye pending hai.');
+          setError('Your Salon Owner account is currently pending Admin verification.');
           setLoading(false);
           return;
         }
@@ -98,7 +98,7 @@ export default function AuthPage() {
         else navigate('/customer');
       }
     } catch (err) {
-      setError(err.message || 'Authentication error aaya, kripya dobara try karein.');
+      setError(err.message || 'Authentication error, please try again.');
     } finally {
       setLoading(false);
     }
